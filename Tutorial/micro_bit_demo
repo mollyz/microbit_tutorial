@@ -1,0 +1,28 @@
+const int COL1 = 3; // Column #1 control
+const int LED = 26; // 'row 1' led
+
+void setup() {
+  Serial.begin(9600);
+  
+  Serial.println("microbit is ready!");
+  
+  // because the LEDs are multiplexed, we must ground the opposite side of tttthe LED
+  pinMode(COL1, OUTPUT);
+  digitalWrite(COL1, LOW);
+  
+  pinMode(LED, OUTPUT);
+}
+
+void loop(){
+  Serial.println("blink!");
+
+  // read the input on analog pin 0:
+  int sensorValue = analogRead(A0);
+  // print out the value you read:
+  Serial.println(sensorValue);
+  
+  digitalWrite(LED, HIGH);
+  delay(500);
+  digitalWrite(LED, LOW);
+  delay(500);
+}
